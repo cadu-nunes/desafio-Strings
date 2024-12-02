@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verificador de Senhas</title>
+  <style>
+    body {
+        background-image: url('/Dicas-para-criar-senhas-seguras.jpg');
+        background-color: #c4d6f4;
+        background-size: contain; 
+        background-position: center; 
+        background-repeat: no-repeat; 
+        background-attachment: fixed;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: black;
+        text-align: center;
+        padding-top: 0,5px;
+        margin-top: 100px;
+    }
+    h1 {
+      color: #333;
+    }
+    input, button {
+      margin: 10px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .result {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+    .success {
+      color: green;
+    }
+    .error {
+      color: red;
+    }
+    .password-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .password-container button {
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Verificador de Senhas</h1>
+  <div class="password-container">
+    <input type="password" id="password" placeholder="Digite sua senha">
+    <button id="toggle-btn">Mostrar</button>
+  </div>
+  <button id="verify-btn">Verificar</button>
+  <p id="result" class="result"></p>
+
+  <script>
+    const CORRECT_PASSWORD = "123456";
+
+    const passwordInput = document.getElementById("password");
+    const verifyBtn = document.getElementById("verify-btn");
+    const toggleBtn = document.getElementById("toggle-btn");
+    const resultDiv = document.getElementById("result");
+
+    verifyBtn.addEventListener("click", () => {
+      const enteredPassword = passwordInput.value;
+
+      if (enteredPassword === CORRECT_PASSWORD) {
+        resultDiv.textContent = "Senha correta!";
+        resultDiv.className = "result success";
+      } else {
+        resultDiv.textContent = "Senha incorreta.";
+        resultDiv.className = "result error";
+      }
+    });
+
+    toggleBtn.addEventListener("click", () => {
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        toggleBtn.textContent = "Ocultar";
+      } else {
+        passwordInput.type = "password";
+        toggleBtn.textContent = "Mostrar";
+      }
+    });
+  </script>
+</body>
+</html>
